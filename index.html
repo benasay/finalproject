@@ -1,79 +1,318 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ben Asay - Home</title>
-    <link rel="stylesheet" href="styles/layoutstyles.css">
-    <link rel="stylesheet" href="styles/styles.css">
-  </head>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ben Asay | Home</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles/styles.css"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a1a2e; }
 
-    <!-- Header -->
-    <div class="common header">
-      <img src="images/ben.png" alt="Ben Asay" height="90">
-      <nav>
-        <a href="index.html">Home</a> |
-        <a href="resume.html">Resume</a> |
-        <a href="aboutme.html">About Me</a>
-        <a href="scratch.html">Scratch
-        </a>
-      </nav>
+    /* NAV */
+    .navbar { background-color: #1a1a2e !important; border-bottom: 3px solid #c9a84c; padding: 16px 0; }
+    .navbar-brand { font-family: 'Playfair Display', serif; color: #c9a84c !important; font-size: 22px; letter-spacing: 1px; }
+    .nav-link { color: #cccccc !important; font-size: 14px; letter-spacing: 1px; font-weight: 500; margin: 0 6px; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: #c9a84c !important; }
+    .nav-link.nba-link { color: #c9a84c !important; border: 1px solid #c9a84c; border-radius: 4px; padding: 6px 14px !important; }
+    .nav-link.nba-link:hover { background-color: #c9a84c; color: #000 !important; }
+
+    /* HERO */
+    .hero-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-name span { color: #c9a84c; }
+    .hero-title {
+      font-size: 18px;
+      color: #a0aec0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .hero-description {
+      font-size: 16px;
+      color: #cbd5e0;
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .hero-photo {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #c9a84c;
+      box-shadow: 0 0 40px rgba(201,168,76,0.3);
+    }
+    .btn-primary-custom {
+      background-color: #c9a84c;
+      color: #000;
+      border: none;
+      padding: 14px 32px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    .btn-primary-custom:hover { background-color: #ffffff; color: #000; }
+    .btn-outline-custom {
+      background-color: transparent;
+      color: #c9a84c;
+      border: 2px solid #c9a84c;
+      padding: 12px 30px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      font-size: 14px;
+      margin-left: 12px;
+    }
+    .btn-outline-custom:hover { background-color: #c9a84c; color: #000; }
+
+    /* STATS BAR */
+    .stats-bar {
+      background-color: #1a1a2e;
+      padding: 40px 0;
+      border-bottom: 1px solid #2d2d4e;
+    }
+    .stat-item { text-align: center; padding: 10px; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 40px; color: #c9a84c; line-height: 1; }
+    .stat-label { font-size: 12px; color: #888; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
+
+    /* SECTIONS */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    .section-subtitle { color: #888; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 48px; }
+    .gold-line { width: 50px; height: 3px; background-color: #c9a84c; margin: 12px 0 32px; }
+
+    /* CARDS */
+    .feature-card {
+      background: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 36px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: 100%;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .feature-icon { font-size: 36px; margin-bottom: 16px; }
+    .feature-card h4 { font-family: 'Playfair Display', serif; color: #1a1a2e; margin-bottom: 12px; font-size: 20px; }
+    .feature-card p { color: #666; font-size: 14px; line-height: 1.7; }
+
+    /* SKILLS */
+    .skills-section { background-color: #1a1a2e; padding: 80px 0; }
+    .skills-section .section-title { color: #ffffff; }
+    .skills-section .section-subtitle { color: #666; }
+    .skills-section .gold-line { background-color: #c9a84c; }
+    .skill-tag {
+      display: inline-block;
+      background-color: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: #c9a84c;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* NBA CTA */
+    .nba-cta {
+      background: linear-gradient(135deg, #0d1117, #111820);
+      padding: 80px 0;
+      border-top: 3px solid #f5a623;
+      border-bottom: 3px solid #f5a623;
+    }
+    .nba-cta h2 { font-family: 'Impact', 'Arial Black', sans-serif; color: #f5a623; font-size: 48px; letter-spacing: 3px; text-transform: uppercase; }
+    .nba-cta p { color: #aaa; font-size: 16px; margin-top: 12px; }
+    .btn-nba { background-color: #f5a623; color: #000; border: none; padding: 16px 40px; font-family: 'Arial Black', sans-serif; font-size: 16px; font-weight: bold; border-radius: 4px; text-decoration: none; display: inline-block; margin-top: 24px; letter-spacing: 1px; transition: all 0.2s; }
+    .btn-nba:hover { background-color: #ffffff; color: #000; }
+
+    /* FOOTER */
+    footer { background-color: #1a1a2e; color: #666; padding: 40px 0; text-align: center; border-top: 2px solid #c9a84c; font-size: 14px; }
+    footer a { color: #c9a84c; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ben Asay</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutme.html">About Me</a></li>
+          <li class="nav-item ms-2"><a class="nav-link nba-link" href="scratch.html">🏀 NBA Page</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Left Menu -->
-    <div class="common leftmenu">
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <p class="hero-title">Pre-Business Student</p>
+          <h1 class="hero-name">Hi, I'm <span>Ben Asay</span></h1>
+          <p class="hero-description">
+            A Pre-Business student at Brigham Young University with a passion for Information Systems,
+            data analysis, and building technology that solves real problems.
+          </p>
+          <a href="resume.html" class="btn-primary-custom">View My Resume</a>
+          <a href="aboutme.html" class="btn-outline-custom">About Me</a>
+        </div>
+        <div class="col-lg-5 text-center mt-5 mt-lg-0">
+          <img src="images/ben.png" alt="Ben Asay" class="hero-photo" />
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Main Body -->
-    <div class="common mainbody">
-      <p>
-        <strong>Mission Statement:</strong> My goal is to become a successful business professional
-        who leverages technology and data to solve real-world problems. I am passionate about
-        building skills in finance, management, and information systems that will allow me to
-        contribute meaningfully to any organization I am part of.
-      </p>
-
-      <ol>
-        <li id="education"><strong>Education</strong>
-          <ul>
-            <li><em>Brigham Young University - Pre-Business</em></li>
-            <li><em>Expected Graduation: 2027</em></li>
-          </ul>
-        </li>
-        <li id="experience"><strong>Experience</strong>
-          <ul>
-            <li><em>Student</em></li>
-            <li><em>BYU Campus Jobs</em></li>
-          </ul>
-        </li>
-        <li id="skills"><strong>Skills</strong>
-          <ul>
-            <li><em>Microsoft Excel</em></li>
-            <li><em>HTML &amp; CSS</em></li>
-            <li><em>Data Analysis</em></li>
-            <li><em>Business Communication</em></li>
-            <li><em>Team Collaboration</em></li>
-          </ul>
-        </li>
-      </ol>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">BYU</div>
+            <div class="stat-label">University</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">2027</div>
+            <div class="stat-label">Expected Graduation</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">IS</div>
+            <div class="stat-label">Focus Area</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number">UT</div>
+            <div class="stat-label">Provo, Utah</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Right Menu -->
-    <div class="common rightmenu">
-      <strong>Ben Asay</strong>
-      <p>Pre-Business Student</p>
-      <p>Brigham Young University</p>
-      <p>Provo, UT 84602</p>
-      <br>
-      <a href="aboutme.html">About Me</a>
+  <!-- ABOUT CARDS -->
+  <section style="padding: 80px 0; background-color: #f8f9fa;">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle">What I Bring</p>
+        <h2 class="section-title">Skills & Interests</h2>
+        <div class="gold-line mx-auto"></div>
+      </div>
+      <div class="row g-4 mt-2">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h4>Data Analysis</h4>
+            <p>Experienced with procurement data analysis, Excel, and building insights that drive business decisions.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h4>Information Systems</h4>
+            <p>Focused on how technology and data systems intersect with business strategy and operations.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">🏀</div>
+            <h4>NBA Fanatic</h4>
+            <p>Deep NBA knowledge beyond the highlight reel — stats, strategy, history, and player development.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <div class="common footer">
-      &copy; 2026 Ben Asay | BYU Pre-Business
+  <!-- SKILLS -->
+  <section class="skills-section">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-subtitle" style="color:#666;">Technical Skills</p>
+        <h2 class="section-title">What I Know</h2>
+        <div class="gold-line mx-auto"></div>
+      </div>
+      <div class="text-center mt-4">
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">HTML & CSS</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Business Communication</span>
+        <span class="skill-tag">Supply Chain</span>
+        <span class="skill-tag">Procurement Analysis</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">AI Tools</span>
+        <span class="skill-tag">GitHub</span>
+      </div>
     </div>
+  </section>
 
-  </body>
+  <!-- NBA CTA -->
+  <section class="nba-cta text-center">
+    <div class="container">
+      <h2>BEN KNOWS BALL</h2>
+      <p>Check out my NBA knowledge page — deep cuts, stats, and an interactive player knowledge game.</p>
+      <a href="scratch.html" class="btn-nba">Visit the NBA Page →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Ben Asay &bull; BYU Pre-Business &bull; <a href="scratch.html">NBA Page</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

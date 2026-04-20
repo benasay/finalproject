@@ -1,66 +1,288 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ben Asay - About Me</title>
-    <link rel="stylesheet" href="styles/layoutstyles.css">
-    <link rel="stylesheet" href="styles/styles.css">
-  </head>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ben Asay | About Me</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a1a2e; }
 
-    <!-- Header -->
-    <div class="common header">
-      <img src="images/ben.png" alt="Ben Asay" height="90">
-      <nav>
-        <a href="index.html">Home</a> |
-        <a href="resume.html">Resume</a> |
-        <a href="aboutme.html">About Me</a>
-      </nav>
+    .navbar { background-color: #1a1a2e !important; border-bottom: 3px solid #c9a84c; padding: 16px 0; }
+    .navbar-brand { font-family: 'Playfair Display', serif; color: #c9a84c !important; font-size: 22px; }
+    .nav-link { color: #cccccc !important; font-size: 14px; letter-spacing: 1px; font-weight: 500; margin: 0 6px; }
+    .nav-link:hover, .nav-link.active { color: #c9a84c !important; }
+    .nav-link.nba-link { color: #c9a84c !important; border: 1px solid #c9a84c; border-radius: 4px; padding: 6px 14px !important; }
+    .nav-link.nba-link:hover { background-color: #c9a84c; color: #000 !important; }
+
+    .page-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 60px 0;
+      color: white;
+    }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; color: #ffffff; }
+    .page-header p { color: #a0aec0; font-size: 16px; margin-top: 8px; }
+    .gold-line { width: 50px; height: 3px; background-color: #c9a84c; margin: 16px 0; }
+
+    /* INTRO SECTION */
+    .intro-section { padding: 80px 0; background-color: #ffffff; }
+    .intro-photo {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 4px solid #c9a84c;
+      box-shadow: 0 12px 40px rgba(201,168,76,0.2);
+    }
+    .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: #1a1a2e; margin-bottom: 8px; }
+    .intro-text .gold-line { margin: 12px 0 20px; }
+    .intro-text p { color: #555; font-size: 15px; line-height: 1.9; margin-bottom: 16px; }
+
+    /* VALUE CARDS */
+    .values-section { background-color: #f8f9fa; padding: 80px 0; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 36px; color: #1a1a2e; }
+    .section-subtitle { color: #888; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+
+    .value-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+      height: 100%;
+      border-left: 4px solid #c9a84c;
+    }
+    .value-card:hover { transform: translateY(-4px); }
+    .value-icon { font-size: 32px; margin-bottom: 14px; }
+    .value-card h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: #1a1a2e; margin-bottom: 10px; }
+    .value-card p { color: #666; font-size: 14px; line-height: 1.7; }
+
+    /* GOALS SECTION */
+    .goals-section { background-color: #1a1a2e; padding: 80px 0; }
+    .goals-section .section-title { color: #ffffff; }
+    .goals-section .section-subtitle { color: #666; }
+    .goal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid #2d2d4e;
+    }
+    .goal-item:last-child { border-bottom: none; }
+    .goal-number { font-family: 'Playfair Display', serif; font-size: 36px; color: #c9a84c; line-height: 1; min-width: 48px; }
+    .goal-text h5 { color: #ffffff; font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .goal-text p { color: #888; font-size: 14px; line-height: 1.7; margin: 0; }
+
+    /* HOBBIES */
+    .hobbies-section { padding: 80px 0; background-color: #ffffff; }
+    .hobby-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: 8px;
+      background: #f8f9fa;
+      transition: all 0.2s;
+      height: 100%;
+    }
+    .hobby-card:hover { background: #1a1a2e; }
+    .hobby-card:hover h5, .hobby-card:hover p { color: #ffffff !important; }
+    .hobby-card:hover .hobby-icon { transform: scale(1.2); }
+    .hobby-icon { font-size: 40px; margin-bottom: 14px; display: block; transition: transform 0.2s; }
+    .hobby-card h5 { font-family: 'Playfair Display', serif; color: #1a1a2e; font-size: 18px; margin-bottom: 8px; }
+    .hobby-card p { color: #666; font-size: 13px; line-height: 1.6; }
+
+    /* NBA CTA */
+    .nba-cta { background: linear-gradient(135deg, #0d1117, #111820); padding: 80px 0; border-top: 3px solid #f5a623; }
+    .nba-cta h2 { font-family: 'Impact', 'Arial Black', sans-serif; color: #f5a623; font-size: 44px; letter-spacing: 3px; text-transform: uppercase; }
+    .nba-cta p { color: #aaa; font-size: 15px; margin-top: 10px; }
+    .btn-nba { background-color: #f5a623; color: #000; border: none; padding: 14px 36px; font-family: 'Arial Black', sans-serif; font-size: 15px; font-weight: bold; border-radius: 4px; text-decoration: none; display: inline-block; margin-top: 20px; letter-spacing: 1px; transition: all 0.2s; }
+    .btn-nba:hover { background-color: #ffffff; color: #000; }
+
+    footer { background-color: #1a1a2e; color: #666; padding: 40px 0; text-align: center; border-top: 2px solid #c9a84c; font-size: 14px; }
+    footer a { color: #c9a84c; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ben Asay</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+          <li class="nav-item"><a class="nav-link active" href="aboutme.html">About Me</a></li>
+          <li class="nav-item ms-2"><a class="nav-link nba-link" href="scratch.html">🏀 NBA Page</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Left Menu -->
-    <div class="common leftmenu">
-      <a href="#about">About</a>
-      <a href="#hobbies">Hobbies</a>
-      <a href="#goals">Goals</a>
+  <div class="page-header">
+    <div class="container">
+      <h1>About Me</h1>
+      <div class="gold-line"></div>
+      <p>Who I Am, What I Value, Where I'm Headed</p>
     </div>
+  </div>
 
-    <!-- Main Body -->
-    <div class="common mainbody">
-      <h2 id="about">About Me</h2>
-      <p>
-        Hi! My name is Ben Asay. I am a Pre-Business student at Brigham Young University
-        in Provo, Utah. I enjoy learning new skills and working hard toward my goals.
-      </p>
-
-      <h3 id="hobbies">Hobbies</h3>
-      <ul>
-        <li>Weightlifting</li>
-        <li>Reading</li>
-        <li>Learning about technology and business</li>
-      </ul>
-
-      <h3 id="goals">Goals</h3>
-      <ul>
-        <li>Graduate from BYU with a Business degree</li>
-        <li>Build a career in business and finance</li>
-        <li>Continue developing technology skills</li>
-      </ul>
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-4 text-center">
+          <img src="images/ben.png" alt="Ben Asay" class="intro-photo" />
+        </div>
+        <div class="col-lg-8 intro-text">
+          <h2>Hi, I'm Ben Asay</h2>
+          <div class="gold-line"></div>
+          <p>
+            I'm a Pre-Business student at Brigham Young University in Provo, Utah, with a focus on
+            Information Systems. I'm passionate about understanding how technology and data can be used
+            to make smarter business decisions.
+          </p>
+          <p>
+            During my internship with ATL Technology, I worked on real procurement data across international
+            locations — turning raw numbers into actionable recommendations. That experience taught me that
+            good analysis isn't just about the data, it's about understanding the story behind it.
+          </p>
+          <p>
+            When I'm not studying or working, you'll find me in the gym, reading, or deep-diving into NBA
+            statistics and player history. I believe in working hard, staying curious, and always looking
+            for ways to improve.
+          </p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Right Menu -->
-    <div class="common rightmenu">
-      <strong>Ben Asay</strong>
-      <p>Pre-Business Student</p>
-      <p>Brigham Young University</p>
-      <p>Provo, UT 84602</p>
-      <br>
-      <a href="resume.html">My Resume</a>
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-subtitle">What Drives Me</p>
+        <h2 class="section-title">Core Values</h2>
+        <div class="gold-line mx-auto" style="margin: 12px auto 0 !important;"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="value-card">
+            <div class="value-icon">🔍</div>
+            <h4>Curiosity</h4>
+            <p>I'm always asking why. Whether it's a business problem, a data set, or how a basketball play develops — I want to understand the deeper mechanics.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <div class="value-icon">💪</div>
+            <h4>Work Ethic</h4>
+            <p>Whether it's in the gym or on a project deadline, I believe consistent effort is what separates good from great.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h4>Integrity</h4>
+            <p>Doing the right thing even when it's hard. My faith and values shape how I approach every relationship and responsibility.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <div class="common footer">
-      &copy; 2026 Ben Asay | BYU Pre-Business
+  <!-- GOALS -->
+  <section class="goals-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-subtitle" style="color:#666;">Looking Forward</p>
+        <h2 class="section-title" style="color:#fff;">My Goals</h2>
+        <div class="gold-line mx-auto" style="margin:12px auto 0 !important;"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="goal-item">
+            <div class="goal-number">01</div>
+            <div class="goal-text">
+              <h5>Graduate from BYU with a Business Degree</h5>
+              <p>Complete my degree in Business Management with an Information Systems focus by 2027, building a strong academic foundation.</p>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-number">02</div>
+            <div class="goal-text">
+              <h5>Build a Career in Business Technology</h5>
+              <p>Pursue a career that sits at the intersection of data, technology, and business strategy — helping organizations make smarter decisions.</p>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-number">03</div>
+            <div class="goal-text">
+              <h5>Keep Growing Every Day</h5>
+              <p>Continue developing technical and interpersonal skills, staying curious, and never getting too comfortable with where I am.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </body>
+  <!-- HOBBIES -->
+  <section class="hobbies-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-subtitle">Outside the Classroom</p>
+        <h2 class="section-title">Hobbies & Interests</h2>
+        <div class="gold-line mx-auto" style="margin:12px auto 0 !important;"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="hobby-card">
+            <span class="hobby-icon">🏋️</span>
+            <h5>Weightlifting</h5>
+            <p>Back and bicep days are a religion. The gym is where I reset and recharge.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="hobby-card">
+            <span class="hobby-icon">🏀</span>
+            <h5>NBA</h5>
+            <p>Deep film study, obscure player history, and knowing every role player on every roster.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="hobby-card">
+            <span class="hobby-icon">📖</span>
+            <h5>Reading</h5>
+            <p>Currently working through the Book of Alma. Always learning something new.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="hobby-card">
+            <span class="hobby-icon">💻</span>
+            <h5>Tech</h5>
+            <p>Building things with code, exploring AI tools, and seeing what technology can do.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NBA CTA -->
+  <section class="nba-cta text-center">
+    <div class="container">
+      <h2>BEN KNOWS BALL</h2>
+      <p>Check out my NBA knowledge page and see if your ball IQ matches up.</p>
+      <a href="scratch.html" class="btn-nba">Visit the NBA Page →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Ben Asay &bull; BYU Pre-Business &bull; <a href="scratch.html">🏀 NBA Page</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
