@@ -1,0 +1,261 @@
+/* =============================================
+   scratchstyles.css — NBA Theme Custom Stylesheet
+   BYU IS Web Dev Project — Ben
+   ============================================= */
+
+/* 1. GLOBAL / BODY — Font family + background color */
+body {
+  font-family: 'Georgia', serif;
+  background-color: #0d1117;
+  color: #e6e6e6;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. HEADINGS — Font family + font color */
+h1, h2, h3 {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  color: #f5a623;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* 3. PARAGRAPH TEXT — Font color */
+p {
+  font-family: 'Georgia', serif;
+  color: #cccccc;
+  line-height: 1.7;
+}
+
+/* 4. LINKS — Font color + decoration */
+a {
+  color: #f5a623;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* =============================================
+   NAVIGATION DIV
+   ============================================= */
+div.top-nav, .top-nav {
+  background-color: #161b22;
+  padding: 14px 30px;
+  display: flex;
+  gap: 24px;
+  border-bottom: 2px solid #f5a623;
+}
+
+.top-nav a {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 14px;
+  color: #f5a623;
+  letter-spacing: 1px;
+}
+
+.top-nav a:hover {
+  color: #ffffff;
+}
+
+/* =============================================
+   HERO SECTION DIV
+   ============================================= */
+div.hero-section, .hero-section {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background-color: #111820;
+  border-bottom: 3px solid #f5a623;
+}
+
+.site-title {
+  font-size: 64px;
+  margin: 0 0 10px 0;
+  color: #f5a623;
+  text-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+}
+
+.site-subtitle {
+  font-size: 18px;
+  color: #aaaaaa;
+  margin-bottom: 30px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+.anchor-btn {
+  display: inline-block;
+  background-color: #f5a623;
+  color: #000000;
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-family: 'Arial Black', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.anchor-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* =============================================
+   IMAGE SECTION DIV
+   ============================================= */
+div.image-section, .image-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #0d1117;
+}
+
+.court-img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  border: 3px solid #f5a623;
+  box-shadow: 0 0 30px rgba(245, 166, 35, 0.2);
+}
+
+/* =============================================
+   LIST SECTION DIV
+   ============================================= */
+div.list-section, .list-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.elite-list {
+  font-family: 'Georgia', serif;
+  color: #e6e6e6;
+  line-height: 2;
+  font-size: 16px;
+}
+
+.elite-list li {
+  color: #f5a623;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.elite-list ul li {
+  color: #cccccc;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* =============================================
+   VIDEO SECTION DIV
+   ============================================= */
+div.video-section, .video-section {
+  background-color: #111820;
+  padding: 60px 30px;
+  text-align: center;
+  border-top: 2px solid #222;
+  border-bottom: 2px solid #222;
+}
+
+.video-wrapper {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.video-wrapper iframe {
+  border: 3px solid #f5a623;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.video-note {
+  font-size: 13px;
+  color: #888888;
+  font-style: italic;
+  margin-top: 12px;
+}
+
+.video-note code {
+  background-color: #1e2530;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #f5a623;
+  font-size: 12px;
+}
+
+/* =============================================
+   ANCHOR / DEEP CUTS SECTION
+   ============================================= */
+.anchor-section {
+  text-align: center;
+  padding: 80px 30px;
+  background-color: #0d1117;
+}
+
+.game-btn {
+  display: inline-block;
+  background-color: #f5a623;
+  color: #000000;
+  padding: 16px 36px;
+  border-radius: 4px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+.game-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* =============================================
+   TABLEAU SECTION
+   ============================================= */
+.tableau-section {
+  background-color: #111820;
+  padding: 60px 30px;
+  text-align: center;
+  border-top: 2px solid #222;
+}
+
+.tableau-placeholder {
+  background-color: #1a2030;
+  border: 2px dashed #f5a623;
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 700px;
+  margin: 20px auto;
+  color: #aaaaaa;
+  font-style: italic;
+}
+
+.tableau-placeholder code {
+  background-color: #0d1117;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #f5a623;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer {
+  background-color: #161b22;
+  text-align: center;
+  padding: 30px;
+  border-top: 2px solid #f5a623;
+  color: #666666;
+  font-size: 14px;
+}
+
+.site-footer a {
+  color: #f5a623;
+}
