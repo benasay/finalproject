@@ -1,312 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ball Knowledge Checker | Do You Know Ball?</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NBA Knowledge Rater | Ben Knows Ball</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: #1a1a2e;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      color: #e0e0e0;
-      min-height: 100vh;
-    }
-    .navbar {
-      background-color: #c8102e;
-      padding: 12px 20px;
-      text-align: right;
-    }
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.9em;
-      font-weight: bold;
-    }
-    .navbar a:hover { color: #ffd700; }
-    .hero {
-      background-color: #16213e;
-      text-align: center;
-      padding: 35px 20px 25px;
-      border-bottom: 3px solid #c8102e;
-    }
-    .hero h1 { color: #ffd700; font-size: 2.2em; letter-spacing: 2px; margin-bottom: 8px; }
-    .hero p { color: #aaa; font-size: 0.95em; }
-    .app-container { max-width: 700px; margin: 35px auto; padding: 0 20px; }
-    .card {
-      background-color: #16213e;
-      border-left: 4px solid #c8102e;
-      border-radius: 6px;
-      padding: 25px 30px;
-      margin-bottom: 25px;
-    }
-    .card h2 {
-      color: #ffd700;
-      font-size: 1.2em;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #c8102e;
-      padding-bottom: 8px;
-    }
-    .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .player-input {
-      flex: 1;
-      padding: 12px 15px;
-      font-size: 1em;
-      border: 2px solid #333;
-      border-radius: 5px;
-      background-color: #0f3460;
-      color: #fff;
-      outline: none;
-      min-width: 200px;
-    }
-    .player-input:focus { border-color: #ffd700; }
-    .player-input::placeholder { color: #888; }
-    .check-btn {
-      background-color: #c8102e;
-      color: #fff;
-      border: none;
-      padding: 12px 22px;
-      font-size: 1em;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .check-btn:hover { background-color: #ffd700; color: #1a1a2e; }
-    .check-btn:disabled { background-color: #555; cursor: not-allowed; color: #999; }
-    .result-box {
-      display: none;
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 6px;
-      text-align: center;
-    }
-    .result-box.show { display: block; }
-    .result-box.elite { background-color: #1a3a1a; border: 2px solid #00cc44; }
-    .result-box.mid { background-color: #2a2a0a; border: 2px solid #ffd700; }
-    .result-box.casual { background-color: #3a1a1a; border: 2px solid #c8102e; }
-    .result-box.unknown { background-color: #1a1a2e; border: 2px solid #555; }
-    .tier-badge { font-size: 1.8em; font-weight: bold; margin-bottom: 8px; }
-    .tier-badge.elite { color: #00cc44; }
-    .tier-badge.mid { color: #ffd700; }
-    .tier-badge.casual { color: #c8102e; }
-    .tier-badge.unknown { color: #aaa; }
-    .result-desc { font-size: 0.95em; line-height: 1.6; color: #ccc; margin-top: 10px; }
-    .loading-msg { text-align: center; color: #ffd700; font-size: 0.9em; margin-top: 15px; display: none; }
-    .score-row { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 10px; }
-    .score-item { background-color: #0f3460; border-radius: 6px; padding: 12px 20px; min-width: 100px; }
-    .score-num { font-size: 2em; font-weight: bold; color: #ffd700; }
-    .score-label { font-size: 0.75em; color: #aaa; margin-top: 4px; }
-    .history-list { list-style: none; padding: 0; }
-    .history-list li {
-      padding: 8px 0;
-      border-bottom: 1px solid #333;
-      font-size: 0.9em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .history-list li:last-child { border-bottom: none; }
-    .history-player { color: #fff; }
-    .history-tier { font-size: 0.8em; font-weight: bold; padding: 3px 8px; border-radius: 10px; }
-    .history-tier.elite { background-color: #00cc44; color: #000; }
-    .history-tier.mid { background-color: #ffd700; color: #000; }
-    .history-tier.casual { background-color: #c8102e; color: #fff; }
-    .history-tier.unknown { background-color: #555; color: #fff; }
-    .empty-history { color: #555; font-size: 0.9em; font-style: italic; text-align: center; padding: 10px 0; }
-    .reset-btn {
-      background: none;
-      border: 1px solid #555;
-      color: #aaa;
-      padding: 6px 14px;
-      font-size: 0.8em;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .reset-btn:hover { border-color: #c8102e; color: #c8102e; }
-    .footer { text-align: center; padding: 15px; font-size: 0.8em; color: #555; border-top: 1px solid #333; margin-top: 20px; }
-    .footer a { color: #ffd700; text-decoration: none; }
+    body { font-family: 'Georgia', serif; background-color: #0d1117; color: #e6e6e6; min-height: 100vh; }
+
+    nav { background-color: #161b22; padding: 14px 30px; display: flex; gap: 24px; border-bottom: 2px solid #f5a623; }
+    nav a { font-family: 'Arial Black', sans-serif; font-size: 13px; color: #f5a623; text-decoration: none; letter-spacing: 1px; }
+    nav a:hover { color: #ffffff; }
+
+    .hero { text-align: center; padding: 60px 20px 40px; background-color: #111820; border-bottom: 3px solid #f5a623; }
+    .hero h1 { font-family: 'Impact', 'Arial Black', sans-serif; font-size: 48px; color: #f5a623; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 20px rgba(245,166,35,0.35); }
+    .hero p { color: #aaaaaa; font-style: italic; margin-top: 10px; font-size: 16px; }
+
+    .game-container { max-width: 700px; margin: 50px auto; padding: 0 20px; }
+
+    .card { background-color: #161b22; border: 2px solid #f5a623; border-radius: 10px; padding: 40px; text-align: center; box-shadow: 0 0 30px rgba(245,166,35,0.1); }
+    .card h2 { font-family: 'Arial Black', sans-serif; font-size: 20px; color: #f5a623; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+    .card p.instructions { color: #999; font-size: 14px; margin-bottom: 28px; line-height: 1.6; }
+
+    .input-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    input[type="text"] { padding: 14px 18px; font-size: 16px; border: 2px solid #f5a623; border-radius: 6px; background-color: #0d1117; color: #ffffff; width: 100%; max-width: 360px; font-family: 'Georgia', serif; outline: none; }
+    input[type="text"]::placeholder { color: #555; }
+    input[type="text"]:focus { border-color: #ffffff; box-shadow: 0 0 10px rgba(245,166,35,0.3); }
+    button#rateBtn { padding: 14px 28px; background-color: #f5a623; color: #000; border: none; border-radius: 6px; font-family: 'Arial Black', sans-serif; font-size: 15px; cursor: pointer; letter-spacing: 1px; }
+    button#rateBtn:hover { background-color: #ffffff; }
+
+    #result-box { margin-top: 36px; display: none; animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .tier-badge { display: inline-block; font-family: 'Impact', 'Arial Black', sans-serif; font-size: 30px; letter-spacing: 2px; padding: 10px 28px; border-radius: 6px; margin-bottom: 16px; text-transform: uppercase; }
+    .tier-goat    { background-color: #ffd700; color: #000; }
+    .tier-casual  { background-color: #555555; color: #fff; }
+    .tier-solid   { background-color: #4a9eff; color: #fff; }
+    .tier-elite   { background-color: #f5a623; color: #000; }
+    .tier-unknown { background-color: #2a2a2a; color: #888; border: 1px solid #444; }
+
+    #result-player { font-family: 'Arial Black', sans-serif; font-size: 24px; color: #ffffff; margin-bottom: 12px; }
+    #result-explanation { color: #bbbbbb; font-size: 15px; line-height: 1.7; max-width: 520px; margin: 0 auto; }
+
+    .scoreboard { margin-top: 40px; background-color: #111820; border: 1px solid #333; border-radius: 8px; padding: 20px; }
+    .scoreboard h3 { font-family: 'Arial Black', sans-serif; color: #f5a623; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+    #history-list { list-style: none; padding: 0; }
+    #history-list li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #1e2530; font-size: 14px; }
+    #history-list li:last-child { border-bottom: none; }
+    .hist-name { font-weight: bold; color: #fff; }
+    .hist-tier { font-family: 'Arial Black', sans-serif; font-size: 11px; padding: 3px 10px; border-radius: 4px; letter-spacing: 1px; }
+
+    .tier-guide { margin-top: 40px; background-color: #111820; border: 1px solid #333; border-radius: 8px; padding: 24px; text-align: left; }
+    .tier-guide h3 { font-family: 'Arial Black', sans-serif; color: #f5a623; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; text-align: center; }
+    .tier-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+    .tier-label { font-family: 'Arial Black', sans-serif; font-size: 11px; padding: 3px 10px; border-radius: 4px; min-width: 70px; text-align: center; letter-spacing: 1px; flex-shrink: 0; }
+    .tier-desc { color: #aaa; font-size: 13px; line-height: 1.5; }
+
+    footer { text-align: center; padding: 30px; color: #555; font-size: 13px; border-top: 2px solid #f5a623; margin-top: 60px; }
+    footer a { color: #f5a623; text-decoration: none; }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <a href="scratch.html">← Back to Do You Know Ball?</a>
-    <a href="index.html">Home</a>
-    <a href="resume.html">Resume</a>
-  </div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="resume.html">📄 Resume</a>
+    <a href="aboutme.html">👤 About Me</a>
+    <a href="scratch.html">🏀 NBA Page</a>
+  </nav>
 
   <div class="hero">
-    <h1>🏀 Ball Knowledge Checker</h1>
-    <p>Enter any NBA player. We'll tell you if you actually know ball.</p>
+    <h1>🏀 NBA Knowledge Rater</h1>
+    <p>Enter any NBA player. We'll tell you how elite your ball knowledge really is.</p>
   </div>
 
-  <div class="app-container">
-
+  <div class="game-container">
     <div class="card">
       <h2>Who Do You Know?</h2>
-      <p style="font-size:0.9em; color:#aaa; margin-bottom:15px;">
-        Type any NBA player — past or present. The more obscure, the more elite your knowledge.
+      <p class="instructions">
+        Type any NBA player's name — past or present. The more obscure the player,
+        the higher your ball IQ score. Are you a casual or a true student of the game?
       </p>
+
       <div class="input-row">
-        <input type="text" id="playerInput" class="player-input" placeholder="e.g. Hamidou Diallo, Bones Hyland..." maxlength="60">
-        <button class="check-btn" id="checkBtn" onclick="checkPlayer()">Check It</button>
+        <input type="text" id="playerInput" placeholder="e.g. Bismack Biyombo..." maxlength="60" />
+        <button id="rateBtn" onclick="ratePlayer()">Rate It</button>
       </div>
-      <div class="loading-msg" id="loadingMsg">🏀 Checking the film room...</div>
-      <div class="result-box" id="resultBox">
-        <div class="tier-badge" id="tierBadge"></div>
-        <div id="playerName" style="font-size:1.1em; color:#fff; margin-bottom:6px;"></div>
-        <div class="result-desc" id="resultDesc"></div>
+
+      <div id="result-box">
+        <div id="result-player"></div>
+        <div class="tier-badge" id="tier-badge"></div>
+        <p id="result-explanation"></p>
+      </div>
+
+      <div class="scoreboard" id="scoreboard" style="display:none;">
+        <h3>📋 Session History</h3>
+        <ul id="history-list"></ul>
+      </div>
+
+      <div class="tier-guide">
+        <h3>🏆 Tier Guide</h3>
+        <div class="tier-row">
+          <span class="tier-label tier-goat">GOAT</span>
+          <span class="tier-desc">All-time legends. Jordan, LeBron, Kobe, Magic, Bird, Shaq.</span>
+        </div>
+        <div class="tier-row">
+          <span class="tier-label tier-casual">CASUAL</span>
+          <span class="tier-desc">Current superstars every fan knows. Curry, Durant, Giannis, Luka.</span>
+        </div>
+        <div class="tier-row">
+          <span class="tier-label tier-solid">SOLID</span>
+          <span class="tier-desc">Real NBA fans know these. Starters, role players, recent All-Stars.</span>
+        </div>
+        <div class="tier-row">
+          <span class="tier-label tier-elite">ELITE</span>
+          <span class="tier-desc">Deep cuts. Journeymen, bench guys, role players. You watch tape.</span>
+        </div>
+        <div class="tier-row">
+          <span class="tier-label tier-unknown">UNKNOWN</span>
+          <span class="tier-desc">Not in the database yet. Try a different spelling.</span>
+        </div>
       </div>
     </div>
-
-    <div class="card">
-      <h2>Your Session Stats</h2>
-      <div class="score-row">
-        <div class="score-item">
-          <div class="score-num" id="totalChecked">0</div>
-          <div class="score-label">Players Checked</div>
-        </div>
-        <div class="score-item">
-          <div class="score-num" id="eliteCount">0</div>
-          <div class="score-label">Elite Picks 🔥</div>
-        </div>
-        <div class="score-item">
-          <div class="score-num" id="knowledgeScore">0%</div>
-          <div class="score-label">Ball IQ Score</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Your Checks This Session</h2>
-      <ul class="history-list" id="historyList">
-        <li><span class="empty-history">No players checked yet. Get started above!</span></li>
-      </ul>
-      <button class="reset-btn" onclick="resetSession()">Reset Session</button>
-    </div>
-
   </div>
 
-  <div class="footer">
-    &copy; 2026 Ben Asay | <a href="scratch.html">Back to Do You Know Ball?</a>
-  </div>
+  <footer>
+    <p>Built by Ben Asay &bull; BYU Pre-Business IS Project &bull; <a href="scratch.html">← Back to NBA Page</a></p>
+  </footer>
 
   <script>
-    let sessionHistory = [];
-    let eliteCount = 0;
+    const players = {
+      // GOAT
+      "michael jordan":{"tier":"GOAT","tierClass":"tier-goat","info":"The GOAT himself. 6 rings, 6 Finals MVPs, 5 regular season MVPs. The gold standard."},
+      "lebron james":{"tier":"GOAT","tierClass":"tier-goat","info":"4 rings, 4 Finals MVPs, all-time scoring leader. One of the two greatest ever."},
+      "kobe bryant":{"tier":"GOAT","tierClass":"tier-goat","info":"The Black Mamba. 5 championships, 81-point game, Mamba Mentality forever."},
+      "magic johnson":{"tier":"GOAT","tierClass":"tier-goat","info":"Showtime Lakers. 5 rings, 3 MVPs, revolutionized the point guard position at 6'9\"."},
+      "larry bird":{"tier":"GOAT","tierClass":"tier-goat","info":"The Hick from French Lick. 3 rings, 3 MVPs, one of the greatest competitors ever."},
+      "kareem abdul-jabbar":{"tier":"GOAT","tierClass":"tier-goat","info":"The skyhook. 6 rings, 6 MVPs, held the all-time scoring record for decades."},
+      "shaquille o'neal":{"tier":"GOAT","tierClass":"tier-goat","info":"Shaq was literally unguardable at his peak. 4 rings, Diesel, Superman."},
+      "shaq":{"tier":"GOAT","tierClass":"tier-goat","info":"Shaq was literally unguardable at his peak. 4 rings, Diesel, Superman."},
+      "tim duncan":{"tier":"GOAT","tierClass":"tier-goat","info":"The Big Fundamental. 5 rings, greatest power forward of all time."},
+      "wilt chamberlain":{"tier":"GOAT","tierClass":"tier-goat","info":"100 points in a game. Averaged 50 points in a season. Unmatchable stats."},
+      "bill russell":{"tier":"GOAT","tierClass":"tier-goat","info":"11 championships in 13 seasons. The greatest winner in NBA history."},
+      "hakeem olajuwon":{"tier":"GOAT","tierClass":"tier-goat","info":"The Dream. 2 rings, 2 Finals MVPs, the most skilled center footwork ever."},
+      "julius erving":{"tier":"GOAT","tierClass":"tier-goat","info":"Dr. J invented above-the-rim basketball. ABA and NBA legend forever."},
+      "dr j":{"tier":"GOAT","tierClass":"tier-goat","info":"Dr. J invented above-the-rim basketball. ABA and NBA legend forever."},
 
-    async function checkPlayer() {
+      // CASUAL
+      "stephen curry":{"tier":"CASUAL","tierClass":"tier-casual","info":"Chef Curry changed basketball forever. 4 rings, 2 MVPs including unanimous. Everyone knows Steph."},
+      "steph curry":{"tier":"CASUAL","tierClass":"tier-casual","info":"Chef Curry changed basketball forever. 4 rings, 2 MVPs including unanimous. Everyone knows Steph."},
+      "kevin durant":{"tier":"CASUAL","tierClass":"tier-casual","info":"KD is one of the most skilled scorers ever. 2 rings, 2 Finals MVPs. Household name."},
+      "giannis antetokounmpo":{"tier":"CASUAL","tierClass":"tier-casual","info":"The Greek Freak. Champion, 2 MVPs, Finals MVP. One of the most dominant players of this era."},
+      "luka doncic":{"tier":"CASUAL","tierClass":"tier-casual","info":"Luka Magic. One of the most naturally gifted playmakers ever, already iconic at 25."},
+      "nikola jokic":{"tier":"CASUAL","tierClass":"tier-casual","info":"The Joker. 3 MVPs, 1 championship. The most unique big man in NBA history."},
+      "james harden":{"tier":"CASUAL","tierClass":"tier-casual","info":"The Beard. 2018 MVP, historic scorer and passer. Very well known."},
+      "russell westbrook":{"tier":"CASUAL","tierClass":"tier-casual","info":"Triple-double machine, 2017 MVP. Most athletic point guard of his generation."},
+      "kawhi leonard":{"tier":"CASUAL","tierClass":"tier-casual","info":"The Klaw. 2 rings, 2 Finals MVPs, one of the greatest two-way players ever."},
+      "anthony davis":{"tier":"CASUAL","tierClass":"tier-casual","info":"The Brow. 2020 champion, one of the most physically dominant bigs in the modern era."},
+      "damian lillard":{"tier":"CASUAL","tierClass":"tier-casual","info":"Dame Time. One of the greatest clutch performers and long-range shooters ever."},
+      "joel embiid":{"tier":"CASUAL","tierClass":"tier-casual","info":"The Process. 2023 MVP, one of the most skilled centers of this generation."},
+      "jayson tatum":{"tier":"CASUAL","tierClass":"tier-casual","info":"2024 champion and Finals MVP. One of the faces of the modern NBA."},
+      "kyrie irving":{"tier":"CASUAL","tierClass":"tier-casual","info":"Uncle Drew. One of the greatest ball handlers ever, 2016 champion."},
+      "jimmy butler":{"tier":"CASUAL","tierClass":"tier-casual","info":"Jimmy Buckets. Known for legendary playoff performances and Heat culture."},
+
+      // SOLID
+      "draymond green":{"tier":"SOLID","tierClass":"tier-solid","info":"4 rings, DPOY, the emotional engine of the Warriors dynasty. Real fans know what Draymond brings."},
+      "bam adebayo":{"tier":"SOLID","tierClass":"tier-solid","info":"One of the best defensive centers in the league. Heat culture personified."},
+      "jaylen brown":{"tier":"SOLID","tierClass":"tier-solid","info":"2024 Finals MVP. JB is well known to any real NBA fan."},
+      "devin booker":{"tier":"SOLID","tierClass":"tier-solid","info":"Book dropped 70 points in a game. All-Star scorer, solid fan knowledge."},
+      "trae young":{"tier":"SOLID","tierClass":"tier-solid","info":"Ice Trae. One of the best passers and shooters in the league."},
+      "ja morant":{"tier":"SOLID","tierClass":"tier-solid","info":"Most electrifying athlete in the game. Any NBA fan knows Ja."},
+      "zion williamson":{"tier":"SOLID","tierClass":"tier-solid","info":"Most hyped prospect since LeBron. When healthy, truly dominant."},
+      "chris paul":{"tier":"SOLID","tierClass":"tier-solid","info":"The Point God. 12x All-Star, one of the greatest floor generals ever."},
+      "paul george":{"tier":"SOLID","tierClass":"tier-solid","info":"PG-13, multiple All-NBA selections. Solid NBA fan knowledge."},
+      "demar derozan":{"tier":"SOLID","tierClass":"tier-solid","info":"MidRange God. A pure scorer who never abandoned the mid-range."},
+      "karl-anthony towns":{"tier":"SOLID","tierClass":"tier-solid","info":"KAT, one of the most skilled shooting big men in league history."},
+      "donovan mitchell":{"tier":"SOLID","tierClass":"tier-solid","info":"Spida. Elite scorer and clutch performer. Real fans know him well."},
+      "pascal siakam":{"tier":"SOLID","tierClass":"tier-solid","info":"2019 champion, All-Star, MIP winner. Grew from raw prospect to franchise player."},
+      "rudy gobert":{"tier":"SOLID","tierClass":"tier-solid","info":"The Stifle Tower. 4x DPOY, most dominant shot-blocker of this generation."},
+      "tyrese haliburton":{"tier":"SOLID","tierClass":"tier-solid","info":"One of the best passers in the league. Real fans recognize his elite playmaking."},
+      "brandon ingram":{"tier":"SOLID","tierClass":"tier-solid","info":"BI, one of the smoothest scorers in the league. Real fans know what he brings."},
+
+      // ELITE
+      "bogdan bogdanovic":{"tier":"ELITE","tierClass":"tier-elite","info":"Bogi! Serbian shooting guard with silky skills. 2021 champion with the Bucks. Deep cut right here."},
+      "shake milton":{"tier":"ELITE","tierClass":"tier-elite","info":"Sixers fan favorite and reliable bench piece. If you know Shake Milton you've watched some games."},
+      "nic claxton":{"tier":"ELITE","tierClass":"tier-elite","info":"Nets rim protector with elite athleticism. Knowing Claxton means you follow the league closely."},
+      "bismack biyombo":{"tier":"ELITE","tierClass":"tier-elite","info":"The ultimate journeyman big man. If you know Biyombo you have ELITE ball knowledge."},
+      "kendrick nunn":{"tier":"ELITE","tierClass":"tier-elite","info":"Nunn had a legendary Heat rookie season before injuries hit. Deep cuts!"},
+      "svi mykhailiuk":{"tier":"ELITE","tierClass":"tier-elite","info":"Ukrainian sharpshooter bouncing around the league. If you know Svi, you're a real one."},
+      "hamidou diallo":{"tier":"ELITE","tierClass":"tier-elite","info":"Won the 2019 Dunk Contest by going over Shaq. Athletic freak. Elite knowledge."},
+      "bones hyland":{"tier":"ELITE","tierClass":"tier-elite","info":"One of the most fun bench players in the league. If you know him you watch real ball."},
+      "p.j. tucker":{"tier":"ELITE","tierClass":"tier-elite","info":"The toughest defender of his era and a legendary sneaker collector. ELITE knowledge."},
+      "pj tucker":{"tier":"ELITE","tierClass":"tier-elite","info":"The toughest defender of his era and a legendary sneaker collector. ELITE knowledge."},
+      "thaddeus young":{"tier":"ELITE","tierClass":"tier-elite","info":"Thad Young played for what feels like every team ever. If you know Thad, you know ball."},
+      "udonis haslem":{"tier":"ELITE","tierClass":"tier-elite","info":"UD, the ultimate Heat lifer. 3 rings, played until 40 on pure principle. Legend."},
+      "mario chalmers":{"tier":"ELITE","tierClass":"tier-elite","info":"Rio! Clutch shot in the 2008 national championship AND 2 rings with the Heat. Deep cut."},
+      "brian scalabrine":{"tier":"ELITE","tierClass":"tier-elite","info":"THE WHITE MAMBA. Ring with the Celtics and an absolute folk hero. ELITE."},
+      "scalabrine":{"tier":"ELITE","tierClass":"tier-elite","info":"THE WHITE MAMBA. Ring with the Celtics and an absolute folk hero. ELITE."},
+      "goran dragic":{"tier":"ELITE","tierClass":"tier-elite","info":"The Dragon! Slovenian legend, MIP winner, clutch Heat performer. Solid deep cut."},
+      "chris andersen":{"tier":"ELITE","tierClass":"tier-elite","info":"Birdman! Tattooed shot-blocking legend from the Heat dynasty era. ELITE."},
+      "birdman":{"tier":"ELITE","tierClass":"tier-elite","info":"Birdman! Chris Andersen, tattooed enforcer of the Heat dynasty. ELITE knowledge."},
+      "kwame brown":{"tier":"ELITE","tierClass":"tier-elite","info":"#1 overall pick in 2001 who never lived up to the hype. Most famous draft bust ever."},
+      "ronny turiaf":{"tier":"ELITE","tierClass":"tier-elite","info":"The most enthusiastic bench player in NBA history. ELITE ball knowledge."},
+      "vladimir radmanovic":{"tier":"ELITE","tierClass":"tier-elite","info":"Rad Man! Serbian stretch big for the Lakers. Deep cut Laker fan knowledge."},
+      "luke ridnour":{"tier":"ELITE","tierClass":"tier-elite","info":"Luke Ridnour was once traded THREE times in a single day in 2015. Elite trivia."},
+      "reggie evans":{"tier":"ELITE","tierClass":"tier-elite","info":"The most physical rebounder of his era. If you know Evans you've watched real basketball."},
+      "norris cole":{"tier":"ELITE","tierClass":"tier-elite","info":"Won 2 championships as a role player. If you know Norris Cole you are a student of the game."},
+      "sundiata gaines":{"tier":"ELITE","tierClass":"tier-elite","info":"Hit a buzzer beater days after being called up from the D-League. ELITE trivia knowledge."},
+      "meyers leonard":{"tier":"ELITE","tierClass":"tier-elite","info":"Big three-point shooting center. If you know Meyers Leonard you've watched Heat basketball."},
+    };
+
+    const sessionHistory = [];
+
+    function ratePlayer() {
       const input = document.getElementById('playerInput');
-      const playerName = input.value.trim();
-      if (!playerName) return;
+      const raw = input.value.trim();
+      if (!raw) { alert('Enter a player name first!'); return; }
 
-      const btn = document.getElementById('checkBtn');
-      const loading = document.getElementById('loadingMsg');
-      const resultBox = document.getElementById('resultBox');
+      const key = raw.toLowerCase().replace(/\s+/g, ' ');
+      const result = players[key];
 
-      btn.disabled = true;
-      loading.style.display = 'block';
-      resultBox.classList.remove('show');
+      let tier, tierClass, explanation, displayName;
+      displayName = raw.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
-      try {
-        const response = await fetch("https://api.anthropic.com/v1/messages", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            model: "claude-sonnet-4-20250514",
-            max_tokens: 1000,
-            system: `You are an NBA ball knowledge expert. When given a player name, determine if they are a real NBA player and rate how elite knowing them is.
-
-Respond ONLY with valid JSON in this exact format, no extra text:
-{
-  "isNBAPlayer": true or false,
-  "playerName": "Full correct name",
-  "tier": "elite" or "mid" or "casual" or "unknown",
-  "tierLabel": "Short punchy 3-5 word label",
-  "description": "2-3 fun sentences about this player and what knowing them says about the user's ball knowledge. Use NBA lingo. If not an NBA player, say so."
-}
-
-Tier guide:
-- casual: LeBron, Steph, KD, Luka, Giannis — anyone a non-fan knows
-- mid: All-Stars, known starters, popular role players from last 10 years
-- elite: Deep bench players, two-way contract guys, G-League vets, obscure players, anyone from 15+ years ago who wasn't a star
-- unknown: Not an NBA player`,
-            messages: [{ role: "user", content: `Rate my NBA knowledge for knowing: "${playerName}"` }]
-          })
-        });
-
-        const data = await response.json();
-        const text = data.content[0].text.replace(/```json|```/g, '').trim();
-        const result = JSON.parse(text);
-
-        displayResult(result, playerName);
-        updateHistory(result);
-        updateScores();
-
-      } catch (err) {
-        displayError();
-      } finally {
-        btn.disabled = false;
-        loading.style.display = 'none';
-        input.value = '';
+      if (result) {
+        tier = result.tier;
+        tierClass = result.tierClass;
+        explanation = result.info;
+      } else {
+        tier = "UNKNOWN";
+        tierClass = "tier-unknown";
+        explanation = `"${displayName}" isn't in our database yet. Check the spelling — or maybe you found someone SO obscure you broke the system, which is honestly the most elite move possible.`;
       }
+
+      document.getElementById('result-player').textContent = displayName;
+      const badge = document.getElementById('tier-badge');
+      badge.textContent = tier;
+      badge.className = 'tier-badge ' + tierClass;
+      document.getElementById('result-explanation').textContent = explanation;
+      document.getElementById('result-box').style.display = 'block';
+
+      sessionHistory.unshift({ name: displayName, tier, tierClass });
+      updateHistory();
+      input.value = '';
+      input.focus();
     }
 
-    function displayResult(result, rawInput) {
-      const box = document.getElementById('resultBox');
-      const badge = document.getElementById('tierBadge');
-      const nameEl = document.getElementById('playerName');
-      const desc = document.getElementById('resultDesc');
-
-      box.className = 'result-box show ' + result.tier;
-      badge.className = 'tier-badge ' + result.tier;
-      badge.textContent = result.tierLabel;
-      nameEl.textContent = result.isNBAPlayer ? result.playerName : '"' + rawInput + '"';
-      desc.textContent = result.description;
+    function updateHistory() {
+      document.getElementById('scoreboard').style.display = 'block';
+      document.getElementById('history-list').innerHTML = sessionHistory.slice(0, 8).map(h =>
+        `<li><span class="hist-name">${h.name}</span><span class="hist-tier ${h.tierClass}">${h.tier}</span></li>`
+      ).join('');
     }
 
-    function updateHistory(result) {
-      sessionHistory.unshift(result);
-      if (result.tier === 'elite') eliteCount++;
-
-      const list = document.getElementById('historyList');
-      if (sessionHistory.length === 1) list.innerHTML = '';
-
-      const li = document.createElement('li');
-      li.innerHTML = `<span class="history-player">${result.playerName}</span><span class="history-tier ${result.tier}">${result.tierLabel}</span>`;
-      list.insertBefore(li, list.firstChild);
-    }
-
-    function updateScores() {
-      const total = sessionHistory.length;
-      document.getElementById('totalChecked').textContent = total;
-      document.getElementById('eliteCount').textContent = eliteCount;
-      const score = total > 0 ? Math.round((eliteCount / total) * 100) : 0;
-      document.getElementById('knowledgeScore').textContent = score + '%';
-    }
-
-    function resetSession() {
-      sessionHistory = [];
-      eliteCount = 0;
-      document.getElementById('historyList').innerHTML = '<li><span class="empty-history">No players checked yet. Get started above!</span></li>';
-      document.getElementById('totalChecked').textContent = '0';
-      document.getElementById('eliteCount').textContent = '0';
-      document.getElementById('knowledgeScore').textContent = '0%';
-      document.getElementById('resultBox').classList.remove('show');
-    }
-
-    function displayError() {
-      const box = document.getElementById('resultBox');
-      const badge = document.getElementById('tierBadge');
-      box.className = 'result-box show unknown';
-      badge.className = 'tier-badge unknown';
-      badge.textContent = 'Connection Error';
-      document.getElementById('playerName').textContent = '';
-      document.getElementById('resultDesc').textContent = 'Could not reach the film room. Check your connection and try again.';
-    }
-
-    document.getElementById('playerInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') checkPlayer();
+    document.getElementById('playerInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') ratePlayer();
     });
   </script>
 
