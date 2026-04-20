@@ -1,176 +1,123 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Do You Know Ball? | Ben Asay</title>
-    <link rel="stylesheet" href="styles/scratchstyles.css">
-  </head>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nick Knows Ball | NBA Deep Cuts</title>
+  <link rel="stylesheet" href="styles/scratchstyles.css" />
+</head>
+<body>
 
-    <!-- Top anchor target -->
-    <div id="top"></div>
+  <!-- NAVIGATION back to professional pages -->
+  <nav class="top-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="resume.html">📄 Resume</a>
+    <a href="aboutme.html">👤 About Me</a>
+    <a href="app.html">🏀 NBA Knowledge Game</a>
+  </nav>
 
-    <!-- Navigation back to professional pages -->
-    <div class="navbar">
-      <a href="index.html">Home</a>
-      <a href="resume.html">Resume</a>
-      <a href="aboutme.html">About Me</a>
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <h1 class="site-title">NICK KNOWS BALL</h1>
+    <p class="site-subtitle">Elite NBA Knowledge. Deep Cuts Only.</p>
+    <!-- ON-PAGE ANCHOR LINK -->
+    <a href="#deep-cuts" class="anchor-btn">↓ Go Deep</a>
+  </div>
+
+  <!-- IMAGE SECTION -->
+  <div class="image-section">
+    <img src="images/nba.jpg" alt="NBA Basketball Court" class="court-img" />
+  </div>
+
+  <!-- NESTED LIST SECTION -->
+  <div class="list-section">
+    <h2>Elite Ball IQ Breakdown</h2>
+    <p>How well do you really know the NBA? Here's what separates the casual fan from the true student of the game:</p>
+
+    <!-- ORDERED LIST with UNORDERED LISTS embedded inside -->
+    <ol class="elite-list">
+      <li>Tier 1 — Household Names
+        <ul>
+          <li>LeBron James</li>
+          <li>Stephen Curry</li>
+          <li>Kevin Durant</li>
+        </ul>
+      </li>
+      <li>Tier 2 — Solid Fan Knowledge
+        <ul>
+          <li>Draymond Green</li>
+          <li>Jaylen Brown</li>
+          <li>Bam Adebayo</li>
+        </ul>
+      </li>
+      <li>Tier 3 — Deep Cuts (you're cooking)
+        <ul>
+          <li>Bogdan Bogdanovic</li>
+          <li>Shake Milton</li>
+          <li>Nic Claxton</li>
+        </ul>
+      </li>
+      <li>Tier 4 — Elite Ball Knowledge
+        <ul>
+          <li>Bismack Biyombo</li>
+          <li>Kendrick Nunn</li>
+          <li>Svi Mykhailiuk</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <!-- YOUTUBE VIDEO SECTION -->
+  <div class="video-section">
+    <h2>Study the Game</h2>
+    <p>Even the greats watch film. Here's some essential NBA breakdown content:</p>
+    <div class="video-wrapper">
+      <!-- EMBEDDED YOUTUBE VIDEO -->
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="NBA Breakdown"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p class="video-note">💡 Tip: Replace the YouTube URL above with any NBA video you like. Just swap out the video ID after <code>embed/</code></p>
+  </div>
+
+  <!-- ON-PAGE ANCHOR TARGET -->
+  <div id="deep-cuts" class="anchor-section">
+    <h2>🏀 Deep Cuts — Know Your Ballers</h2>
+    <p>Think you've got elite ball IQ? Test yourself with our NBA Knowledge Game — enter any player name and we'll tell you how deep your knowledge goes.</p>
+    <a href="app.html" class="game-btn">Launch the NBA Knowledge Game →</a>
+  </div>
+
+  <!-- TABLEAU SECTION -->
+  <div class="tableau-section">
+    <h2>📊 NBA Stats Vizualization</h2>
+    <p>Data never lies. Check out this interactive Tableau breakdown:</p>
+
+    <!-- 
+      REPLACE EVERYTHING BELOW THIS LINE with your actual Tableau embed code.
+      To get it:
+      1. Go to your chart on Tableau Public
+      2. Click the Share button at the bottom
+      3. Copy the Embed Code
+      4. Paste it here, replacing the placeholder div below
+    -->
+    <div class="tableau-placeholder">
+      <p>📌 Paste your Tableau embed code here.<br/>
+      Go to Tableau Public → your chart → Share → Embed Code → paste it in <code>scratch.html</code> in the tableau-section div.</p>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-      <h1>🏀 Do You Know Ball?</h1>
-      <p>NBA knowledge for the real ones. Not casual fans. Not box score watchers. <em>Real ones.</em></p>
-      <br>
-      <a class="jump-link" href="#tiers">↓ Jump to the Knowledge Tiers</a>
-    </div>
+  </div>
 
-    <!-- Main Content -->
-    <div class="content-wrapper">
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Built by Ben &bull; BYU Pre-Business &bull; IS Web Dev Project</p>
+    <p><a href="#top">↑ Back to Top</a></p>
+  </footer>
 
-      <!-- What Is This Page -->
-      <div class="section">
-        <h2>What Is This?</h2>
-        <p>
-          Anyone can name LeBron. Anyone can name Steph. But can you name the 10th man on the 2004 Pistons
-          championship roster? Do you know who led the league in charges drawn in 2019? Do you know which
-          center averaged a double-double for 8 straight seasons without ever making an All-Star team?
-        </p>
-        <p>
-          This page is for people who actually watch the games. Who study the tape. Who know the 
-          difference between a screen-and-roll and a Spain pick-and-roll. Welcome.
-        </p>
-        <a href="app.html" class="app-button">🏀 Test Your Ball Knowledge →</a>
-      </div>
-
-      <!-- Image Section -->
-      <div class="section">
-        <h2>The Court Is Where It Happens</h2>
-        <p>Everything comes down to what happens between these lines. Stats are just the aftermath.</p>
-        <img 
-          src="images/nba.jpg" 
-          alt="NBA basketball court" 
-          class="nba-img"
-          width="500"
-          height="300">
-      </div>
-
-      <!-- Knowledge Tiers — anchor target -->
-      <div class="section" id="tiers">
-        <h2>The Ball Knowledge Tiers</h2>
-        <p>Where do you fall? Be honest.</p>
-
-        <ol>
-          <li><strong>Casual Fan</strong>
-            <ul>
-              <li>Knows LeBron, Steph, KD</li>
-              <li>Watches the Finals only</li>
-              <li>Gets scores from Twitter</li>
-            </ul>
-          </li>
-          <li><strong>League Pass Watcher</strong>
-            <ul>
-              <li>Knows all 30 starting lineups</li>
-              <li>Watches 4+ games per week</li>
-              <li>Has a favorite player who isn't a superstar</li>
-            </ul>
-          </li>
-          <li><strong>Advanced Stats Guy</strong>
-            <ul>
-              <li>Knows what RAPTOR and EPM mean</li>
-              <li>Can explain true shooting percentage</li>
-              <li>Watches film, not just highlights</li>
-            </ul>
-          </li>
-          <li><strong>Elite Ball Knower</strong>
-            <ul>
-              <li>Knows bench players on bad teams</li>
-              <li>Can name G-League call-ups by team</li>
-              <li>Watches summer league voluntarily</li>
-              <li>Has opinions on two-way contracts</li>
-            </ul>
-          </li>
-        </ol>
-
-        <div class="back-to-top">
-          <a href="#top">↑ Back to Top</a>
-        </div>
-      </div>
-
-      <!-- YouTube Video -->
-      <div class="section">
-        <h2>The Kind of IQ We're Talking About</h2>
-        <p>
-          This isn't about highlights. It's about reads, positioning, and feel for the game.
-          Watch how the elite guys see the floor differently.
-        </p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/dVBfM4gSvdM" 
-            title="NBA Basketball IQ Video" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <!-- Tableau Section -->
-      <div class="section">
-        <h2>The Numbers Don't Lie</h2>
-        <p>
-          Luka Doncic is one of the most complete players in NBA history by the numbers.
-          Check the percentile ranks — this is what elite looks like on paper.
-        </p>
-        <div class='tableauPlaceholder' id='viz1' style='position: relative; width: 100%; height: 500px;'>
-          <noscript>
-            <a href='#'>
-              <img alt='NBA Player Stats' src='https://public.tableau.com/static/images/nba/nbastats/1.png' style='border: none' />
-            </a>
-          </noscript>
-          <object class='tableauViz' style='display:none;'>
-            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-            <param name='embed_code_version' value='3' />
-            <param name='site_root' value='' />
-            <param name='name' value='NBAPlayerEfficiencyDashboard/Dashboard1' />
-            <param name='tabs' value='no' />
-            <param name='toolbar' value='yes' />
-            <param name='animate_transition' value='yes' />
-            <param name='display_static_image' value='yes' />
-            <param name='display_spinner' value='yes' />
-            <param name='display_overlay' value='yes' />
-            <param name='display_count' value='yes' />
-          </object>
-        </div>
-        <script type='text/javascript'>
-          var divElement = document.getElementById('viz1');
-          var vizElement = divElement.getElementsByTagName('object')[0];
-          vizElement.style.width = '100%';
-          vizElement.style.height = '500px';
-          var scriptElement = document.createElement('script');
-          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-          vizElement.parentNode.insertBefore(scriptElement, vizElement);
-        </script>
-        <p style="font-size:0.8em; color:#888; margin-top:10px;">
-          Note: Tableau embeds require an internet connection to display. If viewing locally, the chart will appear once hosted online.
-        </p>
-      </div>
-
-      <!-- App Link Section -->
-      <div class="section">
-        <h2>Ready to Test Yourself?</h2>
-        <p>
-          Enter any NBA player's name and find out if you're a casual or a certified ball knower.
-          The more niche the player, the higher your score.
-        </p>
-        <a href="app.html" class="app-button">🏀 Launch the Ball Knowledge Checker →</a>
-      </div>
-
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      &copy; 2026 Ben Asay | BYU Pre-Business | <a href="index.html" style="color:#ffd700;">Back to Main Site</a>
-    </div>
-
-  </body>
+</body>
 </html>
